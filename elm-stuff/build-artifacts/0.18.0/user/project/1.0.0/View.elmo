@@ -1,0 +1,381 @@
+var _user$project$View$link = F2(
+	function (name, url) {
+		return A2(
+			_elm_lang$html$Html$a,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$href(url),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(name),
+				_1: {ctor: '[]'}
+			});
+	});
+var _user$project$View$menuElementStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'display', _1: 'inline'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'margin-left', _1: '10px'},
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$View$menuStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'list-style-type', _1: 'none'},
+		_1: {ctor: '[]'}
+	});
+var _user$project$View$lessonListPage = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$h1,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Lessons'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$ul,
+					{ctor: '[]'},
+					A2(
+						_elm_lang$core$List$map,
+						function (lesson) {
+							return A2(
+								_elm_lang$html$Html$li,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: A2(
+										_user$project$View$link,
+										lesson.lessonName,
+										A2(
+											_elm_lang$core$Basics_ops['++'],
+											'/#/lesson',
+											_elm_lang$core$Basics$toString(lesson.lessonId))),
+									_1: {ctor: '[]'}
+								});
+						},
+						model.lessonList)),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$View$usersPage = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$h1,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('users'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$ul,
+					{ctor: '[]'},
+					A2(
+						_elm_lang$core$List$map,
+						function (user) {
+							return A2(
+								_elm_lang$html$Html$li,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: A2(
+										_user$project$View$link,
+										user.name,
+										A2(
+											_elm_lang$core$Basics_ops['++'],
+											'/#/users/',
+											_elm_lang$core$Basics$toString(user.id))),
+									_1: {ctor: '[]'}
+								});
+						},
+						model.users)),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$View$notFoundPage = A2(
+	_elm_lang$html$Html$h1,
+	{ctor: '[]'},
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html$text('page not found'),
+		_1: {ctor: '[]'}
+	});
+var _user$project$View$aboutPage = A2(
+	_elm_lang$html$Html$h1,
+	{ctor: '[]'},
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html$text('about'),
+		_1: {ctor: '[]'}
+	});
+var _user$project$View$homePage = A2(
+	_elm_lang$html$Html$h1,
+	{ctor: '[]'},
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html$text('Home'),
+		_1: {ctor: '[]'}
+	});
+var _user$project$View$userFromId = F2(
+	function (users, idStr) {
+		var id = A2(
+			_elm_lang$core$Result$withDefault,
+			0,
+			_elm_lang$core$String$toInt(idStr));
+		return _elm_lang$core$List$head(
+			A2(
+				_elm_lang$core$List$filter,
+				function (user) {
+					return _elm_lang$core$Native_Utils.eq(id, user.id);
+				},
+				users));
+	});
+var _user$project$View$userPage = F2(
+	function (model, idStr) {
+		var user = A2(_user$project$View$userFromId, model.users, idStr);
+		var _p0 = user;
+		if (_p0.ctor === 'Just') {
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$h1,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('User Profile'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$h2,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: A2(
+									_user$project$View$link,
+									_p0._0.name,
+									A2(
+										_elm_lang$core$Basics_ops['++'],
+										'/#/users/',
+										A2(_elm_lang$core$Basics_ops['++'], idStr, '/hobbies'))),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
+				});
+		} else {
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$h1,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('user not found'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				});
+		}
+	});
+var _user$project$View$hobbiesPage = F2(
+	function (model, idStr) {
+		var user = A2(_user$project$View$userFromId, model.users, idStr);
+		var _p1 = user;
+		if (_p1.ctor === 'Just') {
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$h1,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('user hobbies'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$ul,
+							{ctor: '[]'},
+							A2(
+								_elm_lang$core$List$map,
+								function (hobby) {
+									return A2(
+										_elm_lang$html$Html$li,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text(hobby),
+											_1: {ctor: '[]'}
+										});
+								},
+								_p1._0.hobbies)),
+						_1: {ctor: '[]'}
+					}
+				});
+		} else {
+			return _elm_lang$html$Html$text('user not found');
+		}
+	});
+var _user$project$View$pageBody = function (model) {
+	var routepath = _user$project$Nav$fromUrlHash(model.currentRoute.hash);
+	var _p2 = routepath;
+	_v2_7:
+	do {
+		if (_p2.ctor === '[]') {
+			return _user$project$View$homePage;
+		} else {
+			if (_p2._1.ctor === '::') {
+				if (_p2._0 === 'users') {
+					if (_p2._1._1.ctor === '[]') {
+						return A2(_user$project$View$userPage, model, _p2._1._0);
+					} else {
+						if ((_p2._1._1._0 === 'hobbies') && (_p2._1._1._1.ctor === '[]')) {
+							return A2(_user$project$View$hobbiesPage, model, _p2._1._0);
+						} else {
+							break _v2_7;
+						}
+					}
+				} else {
+					break _v2_7;
+				}
+			} else {
+				switch (_p2._0) {
+					case 'home':
+						return _user$project$View$homePage;
+					case 'about':
+						return _user$project$View$aboutPage;
+					case 'users':
+						return _user$project$View$usersPage(model);
+					case 'lessonList':
+						return _user$project$View$lessonListPage(model);
+					default:
+						break _v2_7;
+				}
+			}
+		}
+	} while(false);
+	return _user$project$View$notFoundPage;
+};
+var _user$project$View$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'maring', _1: '20px'},
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$ul,
+				{
+					ctor: '::',
+					_0: _user$project$View$menuStyle,
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$li,
+						{
+							ctor: '::',
+							_0: _user$project$View$menuElementStyle,
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(_user$project$View$link, 'home', '#/home'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$li,
+							{
+								ctor: '::',
+								_0: _user$project$View$menuElementStyle,
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(_user$project$View$link, 'about', '#/about'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$li,
+								{
+									ctor: '::',
+									_0: _user$project$View$menuElementStyle,
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: A2(_user$project$View$link, 'users', '#/users'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$li,
+									{
+										ctor: '::',
+										_0: _user$project$View$menuElementStyle,
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(_user$project$View$link, 'Lesson List', '#/lessonList'),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _user$project$View$pageBody(model),
+				_1: {ctor: '[]'}
+			}
+		});
+};

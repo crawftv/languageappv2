@@ -1,0 +1,49 @@
+var _user$project$Route$urlFor = function (loc) {
+	var url = function () {
+		var _p0 = loc;
+		switch (_p0.ctor) {
+			case 'Home':
+				return '/';
+			case 'LessonList':
+				return '/lessonlist';
+			default:
+				return '/user';
+		}
+	}();
+	return A2(_elm_lang$core$Basics_ops['++'], '#', url);
+};
+var _user$project$Route$init = function (location) {
+	return location;
+};
+var _user$project$Route$User = {ctor: 'User'};
+var _user$project$Route$LessonList = {ctor: 'LessonList'};
+var _user$project$Route$Home = {ctor: 'Home'};
+var _user$project$Route$locFor = function (path) {
+	var segments = A2(
+		_elm_lang$core$List$filter,
+		function (seg) {
+			return (!_elm_lang$core$Native_Utils.eq(seg, '')) && (!_elm_lang$core$Native_Utils.eq(seg, '#'));
+		},
+		A2(_elm_lang$core$String$split, '/', path.hash));
+	var _p1 = segments;
+	_v1_3:
+	do {
+		if (_p1.ctor === '[]') {
+			return _elm_lang$core$Maybe$Just(_user$project$Route$Home);
+		} else {
+			if (_p1._1.ctor === '[]') {
+				switch (_p1._0) {
+					case 'lessonlist':
+						return _elm_lang$core$Maybe$Just(_user$project$Route$LessonList);
+					case 'user':
+						return _elm_lang$core$Maybe$Just(_user$project$Route$User);
+					default:
+						break _v1_3;
+				}
+			} else {
+				break _v1_3;
+			}
+		}
+	} while(false);
+	return _elm_lang$core$Maybe$Nothing;
+};

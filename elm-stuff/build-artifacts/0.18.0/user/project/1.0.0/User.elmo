@@ -1,0 +1,8 @@
+var _user$project$User$view = function (model) {
+	return _elm_lang$html$Html$text(
+		_elm_lang$core$Basics$toString(model));
+};
+var _user$project$User$Model = F2(
+	function (a, b) {
+		return {id: a, name: b};
+	});

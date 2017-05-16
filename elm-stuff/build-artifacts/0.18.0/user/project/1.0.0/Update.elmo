@@ -1,0 +1,39 @@
+var _user$project$Update$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		if (_p0.ctor === 'UrlChange') {
+			return A2(
+				_elm_lang$core$Platform_Cmd_ops['!'],
+				_elm_lang$core$Native_Utils.update(
+					model,
+					{currentRoute: _p0._0}),
+				{ctor: '[]'});
+		} else {
+			if (_p0._0.ctor === 'Ok') {
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{lessonList: _p0._0._0}),
+					{ctor: '[]'});
+			} else {
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					model,
+					{ctor: '[]'});
+			}
+		}
+	});
+var _user$project$Update$NewLessonList = function (a) {
+	return {ctor: 'NewLessonList', _0: a};
+};
+var _user$project$Update$getLessonList = function () {
+	var url = 'lessonList.json';
+	return A2(
+		_elm_lang$http$Http$send,
+		_user$project$Update$NewLessonList,
+		A2(_elm_lang$http$Http$get, url, _user$project$Effects$decodeLesson));
+}();
+var _user$project$Update$UrlChange = function (a) {
+	return {ctor: 'UrlChange', _0: a};
+};

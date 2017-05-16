@@ -1,0 +1,12 @@
+var _user$project$Model$Model = F3(
+	function (a, b, c) {
+		return {currentRoute: a, users: b, lessonList: c};
+	});
+var _user$project$Model$Lesson = F3(
+	function (a, b, c) {
+		return {lessonId: a, lessonName: b, lessonUrl: c};
+	});
+var _user$project$Model$User = F3(
+	function (a, b, c) {
+		return {id: a, name: b, hobbies: c};
+	});

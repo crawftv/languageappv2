@@ -1,0 +1,32 @@
+var _user$project$Main$initialLessonList = {
+	ctor: '::',
+	_0: A3(_user$project$Model$Lesson, 1, 'Lesson1', 'Lesson1url'),
+	_1: {ctor: '[]'}
+};
+var _user$project$Main$initialUsers = {
+	ctor: '::',
+	_0: A3(
+		_user$project$Model$User,
+		1,
+		'Fred',
+		{
+			ctor: '::',
+			_0: 'running',
+			_1: {
+				ctor: '::',
+				_0: 'climbing',
+				_1: {ctor: '[]'}
+			}
+		}),
+	_1: {ctor: '[]'}
+};
+var _user$project$Main$init = function (location) {
+	return A2(
+		_elm_lang$core$Platform_Cmd_ops['!'],
+		{currentRoute: location, users: _user$project$Main$initialUsers, lessonList: _user$project$Main$initialLessonList},
+		{ctor: '[]'});
+};
+var _user$project$Main$main = A2(
+	_elm_lang$navigation$Navigation$program,
+	_user$project$Update$UrlChange,
+	{init: _user$project$Main$init, view: _user$project$View$view, update: _user$project$Update$update, subscriptions: _user$project$Subscriptions$subscriptions})();

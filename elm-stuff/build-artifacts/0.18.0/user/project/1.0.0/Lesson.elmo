@@ -1,0 +1,4 @@
+var _user$project$Lesson$Lesson = F3(
+	function (a, b, c) {
+		return {lessonId: a, lessonName: b, lessonUrl: c};
+	});

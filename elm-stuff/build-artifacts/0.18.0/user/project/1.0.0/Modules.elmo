@@ -1,0 +1,11 @@
+var _user$project$Modules$view = function (model) {
+	return _elm_lang$html$Html$text(
+		_elm_lang$core$Basics$toString(model));
+};
+var _user$project$Modules$Module = function (a) {
+	return {cardList: a};
+};
+var _user$project$Modules$Card = F2(
+	function (a, b) {
+		return {nativeString: a, englishString: b};
+	});

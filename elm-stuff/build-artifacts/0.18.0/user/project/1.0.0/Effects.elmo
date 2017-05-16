@@ -1,0 +1,7 @@
+var _user$project$Effects$decodeLesson = _elm_lang$core$Json_Decode$list(
+	A4(
+		_elm_lang$core$Json_Decode$map3,
+		_user$project$Model$Lesson,
+		A2(_elm_lang$core$Json_Decode$field, 'lessonID', _elm_lang$core$Json_Decode$int),
+		A2(_elm_lang$core$Json_Decode$field, 'lessonName', _elm_lang$core$Json_Decode$string),
+		A2(_elm_lang$core$Json_Decode$field, 'lessonurl', _elm_lang$core$Json_Decode$string)));

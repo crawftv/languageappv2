@@ -1,0 +1,23 @@
+var _user$project$LessonList$view = function (model) {
+	return _elm_lang$html$Html$text(
+		_elm_lang$core$Basics$toString(model));
+};
+var _user$project$LessonList$Model = function (a) {
+	return {lessonList: a};
+};
+var _user$project$LessonList$Lesson = F3(
+	function (a, b, c) {
+		return {lessonName: a, lessonDescription: b, lessonUrl: c};
+	});
+var _user$project$LessonList$sampleLesson = {
+	ctor: '::',
+	_0: A3(_user$project$LessonList$Lesson, 'lesson1', 'the first lesson', 'www.lesson1.com'),
+	_1: {
+		ctor: '::',
+		_0: A3(_user$project$LessonList$Lesson, 'lesson2', 'the second lesson', 'www.lesson2.org'),
+		_1: {ctor: '[]'}
+	}
+};
+var _user$project$LessonList$initModel = {lessonList: _user$project$LessonList$sampleLesson};
+var _user$project$LessonList$init = {ctor: '_Tuple2', _0: _user$project$LessonList$initModel, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$LessonList$NoOp = {ctor: 'NoOp'};

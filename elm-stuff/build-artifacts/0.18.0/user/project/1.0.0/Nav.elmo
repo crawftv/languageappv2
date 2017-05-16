@@ -1,0 +1,6 @@
+var _user$project$Nav$fromUrlHash = function (urlHash) {
+	return A2(
+		_elm_lang$core$List$drop,
+		1,
+		A2(_elm_lang$core$String$split, '/', urlHash));
+};
